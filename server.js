@@ -36,6 +36,7 @@ io.on('connection', (socket) => {
 
 app.get('/:id', (req, res, next) => {
   const index = clients.findIndex( id => id === req.params.id);
+  console.log('nav index', index);
   if (index === -1) return res.status(200).json({status: 'Not connected'});
 
   res.status(200).json({status: 'Connected'});
