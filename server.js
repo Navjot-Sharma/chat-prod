@@ -24,6 +24,7 @@ const clients = [];
 
 io.on('connection', (socket) => {
   clients.push(socket.id);
+  console.log('array', clients);
   socket.broadcast.to(socket.id).emit('connect');
   socket.on('disconnect', () => {
     const index = clients.findIndex( id => id === socket.id);
@@ -36,8 +37,6 @@ io.on('connection', (socket) => {
 
 app.get('/:id', (req, res, next) => {
   const index = clients.findIndex( id => id === req.params.id);
-  console.log('nav index', index);
-  console.log('array', clients);
   if (index === -1) return res.status(200).json({status: 'Not connected'});
 
   res.status(200).json({status: 'Connected'});
