@@ -48,7 +48,6 @@ app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, 'angular', 'index.html'));
 });
 
-// const port = process.env.PORT || 6969;
-const port = 443;
+const port = process.env.PORT || 6969;
 
 server.listen(port, () => console.log("listening on port ", port));
